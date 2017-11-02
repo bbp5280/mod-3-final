@@ -5,18 +5,19 @@ import './App.css';
 import { connect } from 'react-redux';
 import { storeGOTHouses } from '../../actions';
 import { fetchGOTHouses } from './api';
+import Card from '../Card/Card';
 
 class App extends Component {
 
   async componentDidMount(){
     const gotHouses = await fetchGOTHouses()
-    console.log(gotHouses);
     this.props.storeGOTHouses(gotHouses);
   }
 
   buildCards(){
-    this.props.gotHouses.map(house =>{
+  return  this.props.GOTHouses.map(house =>{
       console.log(house);
+    return  <Card name={house.name} />
     })
   }
 
@@ -28,6 +29,7 @@ class App extends Component {
           <h2>Welcome to Westeros</h2>
         </div>
         <div className='Display-info'>
+          {this.buildCards()}
         </div>
       </div>
     );
