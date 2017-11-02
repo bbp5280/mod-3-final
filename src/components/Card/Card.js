@@ -14,15 +14,19 @@ const Card = ( {name,
     });
   };
 
+
   return (
     <div>
       <h2>{name}</h2>
       <h3>Founded: {founded}</h3>
       <ul>
-        <p>Seats: {seats}</p>
+        <p>Seats: </p>
         {buildListItems(seats)}
       </ul>
-      <p>Titles: {titles}</p>
+      <ul>
+        <p>Titles: </p>
+        {buildListItems(titles)}
+      </ul>
       <p>Coat Of Arms: {coatOfArms}</p>
       <ul>
         <p>Ancestral Wepons: </p>
