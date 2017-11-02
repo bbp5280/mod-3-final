@@ -14,6 +14,12 @@ class App extends Component {
     this.props.storeGOTHouses(gotHouses);
   }
 
+  buildCards(){
+    this.props.gotHouses.map(house =>{
+      console.log(house);
+    })
+  }
+
   render() {
     return (
       <div className='App'>
