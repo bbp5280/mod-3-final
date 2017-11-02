@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { storeGOTHouses } from '../../actions';
-import { fetchGOTHouses } from './api';
+import { fetchGOTHouses, swornMember } from './api';
 import Card from '../Card/Card';
 
 class App extends Component {
@@ -12,6 +12,17 @@ class App extends Component {
   async componentDidMount(){
     const gotHouses = await fetchGOTHouses();
     this.props.storeGOTHouses(gotHouses);
+    this.swornHouseMembers();
+
+  }
+
+  swornHouseMembers (){
+    this.props.GOTHouses.map(house => {
+      house.swornMembers.map(async member => {
+        const members = await  swornMember(member);
+        console.log(members);
+      });
+    });
   }
 
   loadingGif(){
@@ -34,6 +45,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.GOTHouses);
     return (
       <div className='App'>
         <div className='App-header'>
@@ -48,10 +60,6 @@ class App extends Component {
   }
 }
 
-/* <button onClick={() => {
-  this.props.fakeAction();
-  alert(this.props.fake);
-}}> FAKE ACTION</button> */
 
 App.propTypes = {
   storeGOTHouses: PropTypes.func,
