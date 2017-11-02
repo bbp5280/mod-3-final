@@ -8,34 +8,31 @@ const Card = ( {name,
   ancestralWeapons,
   words}) => {
 
-  const buildListItems = (houseFeatures) => {
+  const buildListItems = (houseFeatures, title) => {
     return houseFeatures.map(feature =>{
-      return <li key={feature}>{feature}</li>;
+      return <li key={feature}> {title}: {feature}</li>;
     });
   };
 
   const checkForValue = (houseFeature) => {
-  return  houseFeature === '' ? 'NA': houseFeature
-  }
+    return  houseFeature === '' ? 'NA': houseFeature;
+  };
 
   return (
     <div>
       <h2>{name}</h2>
       <h3>Founded: {checkForValue(founded)}</h3>
       <ul>
-        <p>Seats: </p>
-        {buildListItems(seats)}
+        {buildListItems(seats, 'Seats')}
       </ul>
       <ul>
-        <p>Titles: </p>
-        {buildListItems(titles)}
+        {buildListItems(titles, 'Titles')}
       </ul>
       <p>Coat Of Arms: {coatOfArms}</p>
       <ul>
-        <p>Ancestral Wepons: </p>
-        {buildListItems(ancestralWeapons)}
+        {buildListItems(ancestralWeapons, 'Ancestral Weapons')}
       </ul>
-      <p>Words: {words}</p>
+      <p>Words: {checkForValue(words)}</p>
     </div>
   );
 };
