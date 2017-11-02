@@ -11,6 +11,12 @@ const Card = ( {name,
   return (
     <div>
       <h2>{name}</h2>
+      <h3>{founded}</h3>
+      <p>{coatOfArms}</p>
+      <p>{titles}</p>
+      <p>{seats}</p>
+      <p>{ancestralWeapons}</p>
+      <p>{words}</p>
     </div>
   );
 };

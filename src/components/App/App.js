@@ -10,15 +10,22 @@ import Card from '../Card/Card';
 class App extends Component {
 
   async componentDidMount(){
-    const gotHouses = await fetchGOTHouses()
+    const gotHouses = await fetchGOTHouses();
     this.props.storeGOTHouses(gotHouses);
   }
 
   buildCards(){
-  return  this.props.GOTHouses.map(house =>{
+    return  this.props.GOTHouses.map(house =>{
       console.log(house);
-    return  <Card name={house.name} />
-    })
+      return  <Card name={house.name}
+        founded={house.founded}
+        seats={house.seats}
+        titles={house.titles}
+        coatOfArms={house.coatOfArms}
+        ancestralWeapons={house.ancestralWeapons}
+        words={house.words}
+        key={house.name}/>;
+    });
   }
 
   render() {
@@ -42,7 +49,8 @@ class App extends Component {
 }}> FAKE ACTION</button> */
 
 App.propTypes = {
-  storeGOTHouses: PropTypes.func
+  storeGOTHouses: PropTypes.func,
+  GOTHouses:PropTypes.array
 };
 
 const mapStateToProps = ({ GOTHouses }) => ({ GOTHouses });
