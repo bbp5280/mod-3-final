@@ -14,11 +14,14 @@ const Card = ( {name,
     });
   };
 
+  const checkForValue = (houseFeature) => {
+  return  houseFeature === '' ? 'NA': houseFeature
+  }
 
   return (
     <div>
       <h2>{name}</h2>
-      <h3>Founded: {founded}</h3>
+      <h3>Founded: {checkForValue(founded)}</h3>
       <ul>
         <p>Seats: </p>
         {buildListItems(seats)}
