@@ -20,7 +20,7 @@ const Card = ( {name,
   };
 
   return (
-    <div className='card'>
+    <div className='Card'>
       <div className='inner-card'>
         <h2>{name}</h2>
         <h3>Founded: {checkForValue(founded)}</h3>
