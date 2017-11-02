@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes, { shape, func, string } from 'prop-types';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
@@ -16,19 +16,19 @@ class App extends Component {
 
   buildCards(){
     return  this.props.GOTHouses.map(house =>{
-      console.log(house);
       return  <Card name={house.name}
         founded={house.founded}
         seats={house.seats}
         titles={house.titles}
         coatOfArms={house.coatOfArms}
         ancestralWeapons={house.ancestralWeapons}
-        words={house.words}
+        houseWords={house.words}
         key={house.name}/>;
     });
   }
 
   render() {
+    console.log(this.props.GOTHouses);
     return (
       <div className='App'>
         <div className='App-header'>
