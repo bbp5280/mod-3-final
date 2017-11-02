@@ -12,17 +12,22 @@ class App extends Component {
   async componentDidMount(){
     const gotHouses = await fetchGOTHouses();
     this.props.storeGOTHouses(gotHouses);
-    this.swornHouseMembers();
-
+    const housesWithMembers = await this.swornHouseMembers();
+    this.props.storeGOTHouses(housesWithMembers);
   }
 
   swornHouseMembers (){
-    this.props.GOTHouses.map(house => {
-      house.swornMembers.map(async member => {
-        const members = await  swornMember(member);
-        console.log(members);
+    const allMembers = this.props.GOTHouses.map( house => {
+      const houseMembers = house.swornMembers.map(async member => {
+        const members = await swornMember(member);
+        return members;
       });
+      return Promise.all(houseMembers)
+        .then(values => Object.assign({}, house, {swornMembers:values}))
+        .then(object => object);
     });
+    return Promise.all(allMembers)
+      .then(values => values);
   }
 
   loadingGif(){
@@ -45,7 +50,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.GOTHouses);
     return (
       <div className='App'>
         <div className='App-header'>
