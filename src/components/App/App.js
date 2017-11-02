@@ -4,7 +4,14 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { fakeAction } from '../../actions';
+import { fetchGOTHouses } from './api';
+
 class App extends Component {
+
+  async componentDidMount(){
+    const gotHouses = await fetchGOTHouses()
+    console.log(gotHouses);
+  }
 
   render() {
     return (
@@ -25,7 +32,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  fake: shape({ fake: string }),
+  fake: string,
   fakeAction: func.isRequired
 };
 
