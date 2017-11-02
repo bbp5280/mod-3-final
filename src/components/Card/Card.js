@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Card = ( {name,
   founded,
@@ -6,7 +7,7 @@ const Card = ( {name,
   titles,
   coatOfArms,
   ancestralWeapons,
-  words}) => {
+  houseWords}) => {
 
   const buildListItems = (houseFeatures, title) => {
     return houseFeatures.map(feature =>{
@@ -33,10 +34,20 @@ const Card = ( {name,
         <ul>
           {buildListItems(ancestralWeapons, 'Ancestral Weapons')}
         </ul>
-        <p>Words: {checkForValue(words)}</p>
+        <p>Words: {checkForValue(houseWords)}</p>
       </div>
     </div>
   );
+};
+
+Card.propTypes = {
+  name: PropTypes.string,
+  founded: PropTypes.string,
+  seats: PropTypes.array,
+  titles: PropTypes.array,
+  coatOfArms: PropTypes.string,
+  ancestralWeapons: PropTypes.array,
+  houseWords: PropTypes.string
 };
 
 export default Card;
