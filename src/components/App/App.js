@@ -5,19 +5,27 @@ import './App.css';
 import { connect } from 'react-redux';
 import { storeGOTHouses } from '../../actions';
 import { fetchGOTHouses } from './api';
+import Card from '../Card/Card';
 
 class App extends Component {
 
   async componentDidMount(){
-    const gotHouses = await fetchGOTHouses()
-    console.log(gotHouses);
+    const gotHouses = await fetchGOTHouses();
     this.props.storeGOTHouses(gotHouses);
   }
 
   buildCards(){
-    this.props.gotHouses.map(house =>{
+    return  this.props.GOTHouses.map(house =>{
       console.log(house);
-    })
+      return  <Card name={house.name}
+        founded={house.founded}
+        seats={house.seats}
+        titles={house.titles}
+        coatOfArms={house.coatOfArms}
+        ancestralWeapons={house.ancestralWeapons}
+        words={house.words}
+        key={house.name}/>;
+    });
   }
 
   render() {
@@ -28,6 +36,7 @@ class App extends Component {
           <h2>Welcome to Westeros</h2>
         </div>
         <div className='Display-info'>
+          {this.buildCards()}
         </div>
       </div>
     );
@@ -40,7 +49,8 @@ class App extends Component {
 }}> FAKE ACTION</button> */
 
 App.propTypes = {
-  storeGOTHouses: PropTypes.func
+  storeGOTHouses: PropTypes.func,
+  GOTHouses:PropTypes.array
 };
 
 const mapStateToProps = ({ GOTHouses }) => ({ GOTHouses });
