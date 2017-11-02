@@ -2,13 +2,13 @@ import * as actions from './index';
 
 describe('GOT Actions', () => {
 
-  it('addRecentMovies should take and array and return an action', () => {
+  it(' storeGOTHouses hould take and array and return an action', () => {
     const houses = [
-    {
-       url:"https://www.anapioficeandfire.com/api/houses/81",
-       name:"House Corbray of Heart's Home",
+      {
+        url:"https://www.anapioficeandfire.com/api/houses/81",
+        name:"House Corbray of Heart's Home",
         region:"",
-        coatOfArms:"Three black ravens in flight, holding three red hearts, on a white field(Argent, three ravens volant sable, each clutching in their claws a heart gules)",
+        coatOfArms:"Three black ravens in flight, holding three red hearts",
         words:"",
         titles:[
           "Lord of Heart's Home",
@@ -40,17 +40,49 @@ describe('GOT Actions', () => {
           "https://www.anapioficeandfire.com/api/characters/1182"
         ]
       }
-    ]
+    ];
     const expected = {
-      type: 'ADD_RECENT_MOVIES',
-      recentMovies: [{
-        id: 1,
-        title: 'movieTitle',
-        release_date: 'tomorrow',
-        poster_path: 'this is a path'
-      }]
+      type: 'STORE_HOUSES',
+      gotHouses: [
+        {
+          url:"https://www.anapioficeandfire.com/api/houses/81",
+          name:"House Corbray of Heart's Home",
+          region:"",
+          coatOfArms:"Three black ravens in flight, holding three red hearts",
+          words:"",
+          titles:[
+            "Lord of Heart's Home",
+            "King of the Fingers (historical)"
+          ],
+          seats:[
+            "Heart's Home"
+          ],
+          currentLord:"https://www.anapioficeandfire.com/api/characters/681",
+          heir:"https://www.anapioficeandfire.com/api/characters/677",
+          overlord:"https://www.anapioficeandfire.com/api/houses/7",
+          founded:"",
+          founder:"https://www.anapioficeandfire.com/api/characters/256",
+          diedOut:"",
+          ancestralWeapons:[
+            "Lady Forlorn"
+          ],
+          cadetBranches:[
+
+          ],
+          swornMembers:[
+            "https://www.anapioficeandfire.com/api/characters/255",
+            "https://www.anapioficeandfire.com/api/characters/256",
+            "https://www.anapioficeandfire.com/api/characters/447",
+            "https://www.anapioficeandfire.com/api/characters/654",
+            "https://www.anapioficeandfire.com/api/characters/677",
+            "https://www.anapioficeandfire.com/api/characters/681",
+            "https://www.anapioficeandfire.com/api/characters/871",
+            "https://www.anapioficeandfire.com/api/characters/1182"
+          ]
+        }
+      ]
     };
 
-    expect(actions.addRecentMovies(recentMovies)).toEqual(expected);
+    expect(actions.storeGOTHouses(houses)).toEqual(expected);
   });
 });

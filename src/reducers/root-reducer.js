@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { GOTHouses } from './fake-reducer';
+import { GOTHouses } from './reducers';
 
 const rootReducer = combineReducers({
   GOTHouses
