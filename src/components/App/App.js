@@ -14,6 +14,12 @@ class App extends Component {
     this.props.storeGOTHouses(gotHouses);
   }
 
+  loadingGif(){
+    return this.props.GOTHouses.length === 0
+      ? <img id='wolf' src='/wolf.gif' alt='gif of wolf running' />
+      : this.buildCards();
+  }
+
   buildCards(){
     return  this.props.GOTHouses.map(house =>{
       return  <Card name={house.name}
@@ -28,7 +34,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.GOTHouses);
     return (
       <div className='App'>
         <div className='App-header'>
@@ -36,7 +41,7 @@ class App extends Component {
           <h2>Welcome to Westeros</h2>
         </div>
         <div className='Display-info Container'>
-          {this.buildCards()}
+          {this.loadingGif()}
         </div>
       </div>
     );
